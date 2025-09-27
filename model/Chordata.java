@@ -43,7 +43,7 @@ public abstract class Chordata {
     }
 
     public void exibirInfo() {
-        System.out.println("=== INFORMAÇÕES DO ANIMAL ===");
+        System.out.println("\n=== INFORMAÇÕES DO ANIMAL ===");
         System.out.println("Nome popular     : " + nomePopular);
         System.out.println("Nome científico  : " + nomeCientifico);
         System.out.println("Classe           : " + classeAnimal);
@@ -53,7 +53,7 @@ public abstract class Chordata {
         System.out.println("Respiração       : " + tipoRespiracao);
         System.out.println("Locomoção        : " + modoLocomocao);
         System.out.println("Som emitido      : " + somEmitido);
-        System.out.println("=================================\n");
+        System.out.println("=================================");
     }
 
     //Getters → servem para obter o valor de um atributo privado ou protegido. Setters → servem para alterar o valor desses atributos.
