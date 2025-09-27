@@ -1,11 +1,11 @@
 package model.enums;
 
 public enum ClasseAnimal {
-    MAMIFERO,
-    AVE,
-    PEIXE,
-    ANFIBIO,
-    REPTIL
+    Mamífero,
+    Ave,
+    Peixe,
+    Anfíbio,
+    Réptil
 }
 
 //Serve para distinguir os tipos principais de animais do filo Chordata.

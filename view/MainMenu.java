@@ -18,7 +18,7 @@ public class MainMenu {
     }
 
     public void exibir() {
-        int opcao;
+        int opcao = -1;
         do {
             System.out.println("\n===== MENU PRINCIPAL ZOOLOGIC =====");
             System.out.println("1. Listar todos os animais");
@@ -30,31 +30,34 @@ public class MainMenu {
             System.out.println("7. Filtro: Pele");
             System.out.println("8. Filtro: Respiração");
             System.out.println("9. Filtro: Som");
-
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
 
-            opcao = scanner.nextInt();
-            scanner.nextLine(); // limpar o buffer
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
 
-            switch (opcao) {
-                case 1 -> animalService.listarTodosAnimais();
-                case 2 -> animalService.verDetalhes(scanner);
-                case 3 -> filtrarPorClasse();
-                case 4 -> filtrarPorAlimentacao();
-                case 5 -> filtrarPorCategoriaHabitat();
-                case 6 -> filtrarPorLocomocaoMenu(scanner, animalService);
-                case 7 -> animalService.filtrarPorTipoPele(scanner);
-                case 8 -> animalService.filtrarPorTipoRespiracao(scanner);
-                case 9 -> animalService.filtrarPorTipoSom(scanner);
-                case 0 -> System.out.println("Encerrando o programa...");
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                switch (opcao) {
+                    case 1 -> animalService.listarTodosAnimais();
+                    case 2 -> animalService.verDetalhes(scanner);
+                    case 3 -> filtrarPorClasse();
+                    case 4 -> filtrarPorAlimentacao();
+                    case 5 -> filtrarPorCategoriaHabitat();
+                    case 6 -> filtrarPorLocomocao();
+                    case 7 -> filtrarPorTipoPele();
+                    case 8 -> filtrarPorTipoRespiracao();
+                    case 9 -> filtrarPorTipoSom();
+                    case 0 -> System.out.println("\nEncerrando o programa...");
+                    default -> System.out.println("\nOpção inválida. Digite um número entre 0 e 9.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("\nEntrada inválida! Digite um número.");
             }
 
         } while (opcao != 0);
     }
 
-    // #3
+    // ---------------------- FILTROS ----------------------
+
     private void filtrarPorClasse() {
         System.out.println("\nDigite a classe:");
         System.out.println("1 - Mamífero");
@@ -64,59 +67,67 @@ public class MainMenu {
         System.out.println("5 - Réptil");
         System.out.print("Escolha uma opção: ");
 
-        int opcaoClasse = scanner.nextInt();
-        scanner.nextLine(); // limpar o buffer
+        try {
+            int escolha = Integer.parseInt(scanner.nextLine());
+            String classeInput = switch (escolha) {
+                case 1 -> "Mamífero";
+                case 2 -> "Ave";
+                case 3 -> "Anfíbio";
+                case 4 -> "Peixe";
+                case 5 -> "Réptil";
+                default -> null;
+            };
 
-        String classeInput = "";
-
-        switch (opcaoClasse) {
-            case 1 -> classeInput = "MAMIFERO";
-            case 2 -> classeInput = "AVE";
-            case 3 -> classeInput = "ANFIBIO";
-            case 4 -> classeInput = "PEIXE";
-            case 5 -> classeInput = "REPTIL";
-            default -> {
-                System.out.println("Opção inválida.");
+            if (classeInput == null) {
+                System.out.println("\nOpção inválida.");
                 return;
             }
-        }
 
-        List<Chordata> filtrados = animalService.getAnimaisPorClasse(classeInput);
-
-        if (filtrados.isEmpty()) {
-            System.out.println("Nenhum animal encontrado para a classe informada.");
-        } else {
-            System.out.println("\nAnimais da classe " + classeInput + ":");
-            filtrados.forEach(a -> System.out.println("- " + a.getNomePopular()));
+            List<Chordata> filtrados = animalService.getAnimaisPorClasse(classeInput);
+            if (filtrados.isEmpty()) {
+                System.out.println("\nNenhum animal encontrado para a classe informada.");
+            } else {
+                System.out.println("\nAnimais da classe " + classeInput + ":");
+                for (int i = 0; i < filtrados.size(); i++) {
+                    System.out.println((i + 1) + " - " + filtrados.get(i).getNomePopular());
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("\nEntrada inválida! Digite um número.");
         }
     }
 
-    // #4
     private void filtrarPorAlimentacao() {
+        TipoAlimentacao[] tipos = TipoAlimentacao.values();
         System.out.println("\nSelecione o tipo de alimentação:");
-        for (int i = 0; i < TipoAlimentacao.values().length; i++) {
-            System.out.println((i + 1) + " - " + TipoAlimentacao.values()[i]);
+        for (int i = 0; i < tipos.length; i++) {
+            System.out.println((i + 1) + " - " + tipos[i]);
         }
         System.out.print("Escolha uma opção: ");
-        int opcao = scanner.nextInt();
-        scanner.nextLine(); // limpa o buffer
 
-        if (opcao >= 1 && opcao <= TipoAlimentacao.values().length) {
-            TipoAlimentacao tipoSelecionado = TipoAlimentacao.values()[opcao - 1];
-            List<Chordata> filtrados = animalService.filtrarPorAlimentacao(tipoSelecionado);
+        try {
+            int escolha = Integer.parseInt(scanner.nextLine());
+            if (escolha < 1 || escolha > tipos.length) {
+                System.out.println("\nOpção inválida.");
+                return;
+            }
+
+            TipoAlimentacao tipo = tipos[escolha - 1];
+            List<Chordata> filtrados = animalService.filtrarPorAlimentacao(tipo);
 
             if (filtrados.isEmpty()) {
-                System.out.println("Nenhum animal encontrado com esse tipo de alimentação.");
+                System.out.println("\nNenhum animal encontrado com esse tipo de alimentação.");
             } else {
                 System.out.println("\nAnimais encontrados:");
-                filtrados.forEach(a -> System.out.println("- " + a.getNomePopular() + " (" + tipoSelecionado + ")"));
+                for (int i = 0; i < filtrados.size(); i++) {
+                    System.out.println((i + 1) + " - " + filtrados.get(i).getNomePopular() + " (" + tipo + ")");
+                }
             }
-        } else {
-            System.out.println("Opção inválida.");
+        } catch (NumberFormatException e) {
+            System.out.println("\nEntrada inválida! Digite um número.");
         }
     }
 
-    // #5
     private void filtrarPorCategoriaHabitat() {
         System.out.println("\nSelecione a categoria de habitat:");
         System.out.println("1 - Aquático");
@@ -124,59 +135,157 @@ public class MainMenu {
         System.out.println("3 - Terrestre");
         System.out.println("4 - Urbano");
         System.out.print("Escolha uma opção: ");
-        int opcaoHabitat = scanner.nextInt();
-        CategoriaHabitat categoriaSelecionada = null;
 
-        switch (opcaoHabitat) {
-            case 1:
-                categoriaSelecionada = CategoriaHabitat.AQUATICO;
-                break;
-            case 2:
-                categoriaSelecionada = CategoriaHabitat.FLORESTAL;
-                break;
-            case 3:
-                categoriaSelecionada = CategoriaHabitat.TERRESTRE;
-                break;
-            case 4:
-                categoriaSelecionada = CategoriaHabitat.URBANO;
-                break;
-            default:
-                System.out.println("Opção inválida.");
-                break;
-        }
+        try {
+            int escolha = Integer.parseInt(scanner.nextLine());
+            CategoriaHabitat categoria = switch (escolha) {
+                case 1 -> CategoriaHabitat.Aquático;
+                case 2 -> CategoriaHabitat.Florestal;
+                case 3 -> CategoriaHabitat.Terrestre;
+                case 4 -> CategoriaHabitat.Urbano;
+                default -> null;
+            };
 
-        if (categoriaSelecionada != null) {
-            List<Chordata> todosAnimais = animalService.getTodosAnimais();
-            List<Chordata> filtrados = animalService.filtrarPorCategoriaHabitat(todosAnimais, categoriaSelecionada);
+            if (categoria == null) {
+                System.out.println("\nOpção inválida.");
+                return;
+            }
 
-            System.out.println("\nAnimais encontrados:");
-            filtrados.forEach(a -> System.out.println(a.getNomePopular() + " - " + a.getHabitat()));
+            List<Chordata> filtrados = animalService.filtrarPorCategoriaHabitat(categoria);
+            if (filtrados.isEmpty()) {
+                System.out.println("\nNenhum animal encontrado.");
+            } else {
+                System.out.println("\nAnimais encontrados:");
+                for (int i = 0; i < filtrados.size(); i++) {
+                    System.out.println((i + 1) + " - " + filtrados.get(i).getNomePopular() + " (" + filtrados.get(i).getHabitat() + ")");
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("\nEntrada inválida! Digite um número.");
         }
     }
 
-    // #6
-    private static void filtrarPorLocomocaoMenu(Scanner scanner, AnimalService service) {
-        System.out.println("Escolha o modo de locomoção:");
-        for (ModoLocomocao modo : ModoLocomocao.values()) {
-            System.out.println(modo.ordinal() + " - " + modo);
+    private void filtrarPorLocomocao() {
+        ModoLocomocao[] modos = ModoLocomocao.values();
+        System.out.println("\nEscolha o modo de locomoção:");
+        for (int i = 0; i < modos.length; i++) {
+            System.out.println((i + 1) + " - " + modos[i]);
         }
         System.out.print("Escolha uma opção: ");
-        int escolha = scanner.nextInt();
-        scanner.nextLine(); // Limpa o buffer
 
-        if (escolha >= 0 && escolha < ModoLocomocao.values().length) {
-            ModoLocomocao modoSelecionado = ModoLocomocao.values()[escolha];
-            List<Chordata> resultado = service.filtrarPorLocomocao(modoSelecionado);
-
-            if (resultado.isEmpty()) {
-                System.out.println("Nenhum animal encontrado com esse modo de locomoção.");
-            } else {
-                System.out.println("Animais com locomoção " + modoSelecionado + ":");
-                resultado.forEach(System.out::println);
+        try {
+            int escolha = Integer.parseInt(scanner.nextLine());
+            if (escolha < 1 || escolha > modos.length) {
+                System.out.println("\nOpção inválida.");
+                return;
             }
-        } else {
-            System.out.println("Opção inválida.");
+
+            ModoLocomocao modo = modos[escolha - 1];
+            List<Chordata> filtrados = animalService.filtrarPorLocomocao(modo);
+
+            if (filtrados.isEmpty()) {
+                System.out.println("\nNenhum animal encontrado.");
+            } else {
+                System.out.println("\nAnimais encontrados:");
+                for (int i = 0; i < filtrados.size(); i++) {
+                    System.out.println((i + 1) + " - " + filtrados.get(i).getNomePopular());
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("\nEntrada inválida! Digite um número.");
         }
     }
 
+    private void filtrarPorTipoPele() {
+        TipoPele[] tipos = TipoPele.values();
+        System.out.println("\nEscolha o tipo de pele:");
+        for (int i = 0; i < tipos.length; i++) {
+            System.out.println((i + 1) + " - " + tipos[i]);
+        }
+        System.out.print("Escolha uma opção: ");
+
+        try {
+            int escolha = Integer.parseInt(scanner.nextLine());
+            if (escolha < 1 || escolha > tipos.length) {
+                System.out.println("\nOpção inválida.");
+                return;
+            }
+
+            TipoPele tipo = tipos[escolha - 1];
+            List<Chordata> filtrados = animalService.filtrarPorTipoPele(tipo);
+
+            if (filtrados.isEmpty()) {
+                System.out.println("\nNenhum animal encontrado.");
+            } else {
+                System.out.println("\nAnimais encontrados:");
+                for (int i = 0; i < filtrados.size(); i++) {
+                    System.out.println((i + 1) + " - " + filtrados.get(i).getNomePopular());
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("\nEntrada inválida! Digite um número.");
+        }
+    }
+
+    private void filtrarPorTipoRespiracao() {
+        TipoRespiracao[] tipos = TipoRespiracao.values();
+        System.out.println("\nEscolha o tipo de respiração:");
+        for (int i = 0; i < tipos.length; i++) {
+            System.out.println((i + 1) + " - " + tipos[i]);
+        }
+        System.out.print("Escolha uma opção: ");
+
+        try {
+            int escolha = Integer.parseInt(scanner.nextLine());
+            if (escolha < 1 || escolha > tipos.length) {
+                System.out.println("\nOpção inválida.");
+                return;
+            }
+
+            TipoRespiracao tipo = tipos[escolha - 1];
+            List<Chordata> filtrados = animalService.filtrarPorTipoRespiracao(tipo);
+
+            if (filtrados.isEmpty()) {
+                System.out.println("\nNenhum animal encontrado.");
+            } else {
+                System.out.println("\nAnimais encontrados:");
+                for (int i = 0; i < filtrados.size(); i++) {
+                    System.out.println((i + 1) + " - " + filtrados.get(i).getNomePopular());
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("\nEntrada inválida! Digite um número.");
+        }
+    }
+
+    private void filtrarPorTipoSom() {
+        TipoSom[] tipos = TipoSom.values();
+        System.out.println("\nEscolha o tipo de som:");
+        for (int i = 0; i < tipos.length; i++) {
+            System.out.println((i + 1) + " - " + tipos[i].getDescricao());
+        }
+        System.out.print("Escolha uma opção: ");
+
+        try {
+            int escolha = Integer.parseInt(scanner.nextLine());
+            if (escolha < 1 || escolha > tipos.length) {
+                System.out.println("\nOpção inválida.");
+                return;
+            }
+
+            TipoSom tipo = tipos[escolha - 1];
+            List<Chordata> filtrados = animalService.filtrarPorTipoSom(tipo);
+
+            if (filtrados.isEmpty()) {
+                System.out.println("\nNenhum animal encontrado.");
+            } else {
+                System.out.println("\nAnimais encontrados:");
+                for (int i = 0; i < filtrados.size(); i++) {
+                    System.out.println((i + 1) + " - " + filtrados.get(i).getNomePopular() + " (Som: " + filtrados.get(i).getSomEmitido() + ")");
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("\nEntrada inválida! Digite um número.");
+        }
+    }
 }

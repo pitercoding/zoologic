@@ -15,7 +15,7 @@ public class Peixe extends Chordata {
             TipoPele tipoPele, TipoRespiracao tipoRespiracao, ModoLocomocao modoLocomocao,
             String somEmitido, TipoSom tipoSom, boolean aguaSalgada, boolean possuiBarbatanas) {
 
-        super(nomePopular, nomeCientifico, ClasseAnimal.PEIXE, habitat, alimentacao,
+        super(nomePopular, nomeCientifico, ClasseAnimal.Peixe, habitat, alimentacao,
                 tipoPele, tipoRespiracao, modoLocomocao, somEmitido, tipoSom);
 
         this.aguaSalgada = aguaSalgada;

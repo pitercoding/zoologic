@@ -16,7 +16,7 @@ public class Mamifero extends Chordata {
             TipoPele tipoPele, TipoRespiracao tipoRespiracao, ModoLocomocao modoLocomocao, String somEmitido,
             TipoSom tipoSom, int gestacaoEmDias, boolean possuiPelos, boolean amamentaFilhotes) {
 
-        super(nomePopular, nomeCientifico, ClasseAnimal.MAMIFERO, habitat, alimentacao, tipoPele, tipoRespiracao,
+        super(nomePopular, nomeCientifico, ClasseAnimal.Mamífero, habitat, alimentacao, tipoPele, tipoRespiracao,
                 modoLocomocao, somEmitido, tipoSom);
 
         this.gestacaoEmDias = gestacaoEmDias;

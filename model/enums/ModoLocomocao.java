@@ -1,14 +1,12 @@
 package model.enums;
 
 public enum ModoLocomocao {
-    ANDA,
-    CORRE,
-    VOA,
-    NADA,
-    SALTA,
-    RASTEJA,
-    ESCALA,
-    FLUTUA
+    Anda,
+    Corre,
+    Voa,
+    Nada,
+    Salta,
+    Rasteja
 }
 
 // Define como o animal se move.

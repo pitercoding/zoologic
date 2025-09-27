@@ -15,7 +15,7 @@ public class Reptil extends Chordata {
             TipoPele tipoPele, TipoRespiracao tipoRespiracao, ModoLocomocao modoLocomocao,
             String somEmitido, TipoSom tipoSom, boolean venenoso, String tipoLocomocaoDetalhado) {
 
-        super(nomePopular, nomeCientifico, ClasseAnimal.REPTIL, habitat, alimentacao, tipoPele, tipoRespiracao,
+        super(nomePopular, nomeCientifico, ClasseAnimal.Réptil, habitat, alimentacao, tipoPele, tipoRespiracao,
                 modoLocomocao, somEmitido, tipoSom);
 
         this.venenoso = venenoso;

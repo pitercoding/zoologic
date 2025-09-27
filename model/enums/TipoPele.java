@@ -1,12 +1,10 @@
 package model.enums;
 
 public enum TipoPele {
-    PELOS,
-    PENAS,
-    ESCAMAS,
-    PELE_LISA,
-    CASCO,
-    UMIDA
+    Pelos,
+    Penas,
+    Escamas,
+    Úmida
 }
 
 // Define o tipo de cobertura corporal do animal.
