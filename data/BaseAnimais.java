@@ -10,107 +10,107 @@ public class BaseAnimais {
 
         // ANFÍBIOS
         repository.save(new Anfibio("Sapo-cururu", "Rhinella marina", "Brejos e matas",
-                TipoAlimentacao.INSETIVORO, TipoPele.UMIDA, TipoRespiracao.CUTANEA_PULMONAR,
-                ModoLocomocao.SALTA, "Croc croc", TipoSom.VOCALIZACAO_GRAVE, true, true));
+                TipoAlimentacao.Insetívoro, TipoPele.Úmida, TipoRespiracao.Cutânea_Pulmonar,
+                ModoLocomocao.Salta, "Croc croc", TipoSom.Vocalização_Grave, true, true));
 
         repository.save(new Anfibio("Rã-verde", "Hypsiboas pulchellus", "Lagos, áreas úmidas",
-                TipoAlimentacao.INSETIVORO, TipoPele.UMIDA, TipoRespiracao.CUTANEA_PULMONAR,
-                ModoLocomocao.SALTA, "Coaxar agudo", TipoSom.VOCALIZACAO_AGUDA, true, true));
+                TipoAlimentacao.Insetívoro, TipoPele.Úmida, TipoRespiracao.Cutânea_Pulmonar,
+                ModoLocomocao.Salta, "Coaxar agudo", TipoSom.Vocalização_Aguda, true, true));
 
         repository.save(new Anfibio("Salamandra", "Salamandra salamandra", "Florestas úmidas",
-                TipoAlimentacao.CARNIVORO, TipoPele.UMIDA, TipoRespiracao.CUTANEA_PULMONAR,
-                ModoLocomocao.ANDA, "Sons suaves", TipoSom.SONS_SUAVES, true, true));
+                TipoAlimentacao.Carnívoro, TipoPele.Úmida, TipoRespiracao.Cutânea_Pulmonar,
+                ModoLocomocao.Anda, "Sons suaves", TipoSom.Sons_Suaves, true, true));
 
         repository.save(new Anfibio("Axolote", "Ambystoma mexicanum", "Lagos do México",
-                TipoAlimentacao.CARNIVORO, TipoPele.UMIDA, TipoRespiracao.CUTANEA_PULMONAR,
-                ModoLocomocao.NADA, "Assobios subaquáticos", TipoSom.CANTORIA_ASSOBIO, false, true));
+                TipoAlimentacao.Carnívoro, TipoPele.Úmida, TipoRespiracao.Cutânea_Pulmonar,
+                ModoLocomocao.Nada, "Assobios subaquáticos", TipoSom.Cantoria_Assobio, false, true));
 
         repository.save(new Anfibio("Perereca", "Hyla spp.", "Árvores e matas",
-                TipoAlimentacao.INSETIVORO, TipoPele.UMIDA, TipoRespiracao.CUTANEA_PULMONAR,
-                ModoLocomocao.SALTA, "Coaxar leve", TipoSom.SONS_SUAVES, true, true));
+                TipoAlimentacao.Insetívoro, TipoPele.Úmida, TipoRespiracao.Cutânea_Pulmonar,
+                ModoLocomocao.Salta, "Coaxar leve", TipoSom.Sons_Suaves, true, true));
 
         // AVES
         repository.save(new Ave("Águia", "Aquila chrysaetos", "Montanhas",
-                TipoAlimentacao.CARNIVORO, TipoPele.PENAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.VOA, "Grito agudo", TipoSom.VOCALIZACAO_AGUDA, true, "Curvo"));
+                TipoAlimentacao.Carnívoro, TipoPele.Penas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Voa, "Grito agudo", TipoSom.Vocalização_Aguda, true, "Curvo"));
 
         repository.save(new Ave("Pinguim-imperador", "Aptenodytes forsteri", "Regiões polares",
-                TipoAlimentacao.PISCIVORO, TipoPele.PENAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.NADA, "Grasnado", TipoSom.VOCALIZACAO_GRAVE, false, "Curto e reto"));
+                TipoAlimentacao.Piscívoro, TipoPele.Penas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Nada, "Grasnado", TipoSom.Vocalização_Grave, false, "Curto e reto"));
 
         repository.save(new Ave("Canário", "Serinus canaria", "Ambientes urbanos",
-                TipoAlimentacao.GRANIVORO, TipoPele.PENAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.VOA, "Canto melódico", TipoSom.CANTORIA_ASSOBIO, true, "Fino"));
+                TipoAlimentacao.Granívoro, TipoPele.Penas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Voa, "Canto melódico", TipoSom.Cantoria_Assobio, true, "Fino"));
 
         repository.save(new Ave("Avestruz", "Struthio camelus", "Savanas e desertos",
-                TipoAlimentacao.HERBIVORO, TipoPele.PENAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.CORRE, "Urrado grave", TipoSom.VOCALIZACAO_GRAVE, false, "Largo"));
+                TipoAlimentacao.Herbívoro, TipoPele.Penas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Corre, "Urrado grave", TipoSom.Vocalização_Grave, false, "Largo"));
 
         repository.save(new Ave("Tucano-toco", "Ramphastos toco", "Florestas tropicais",
-                TipoAlimentacao.FRUTIVORO, TipoPele.PENAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.VOA, "Sons curtos e secos", TipoSom.SONS_SUAVES, true, "Longo e largo"));
+                TipoAlimentacao.Frutívoro, TipoPele.Penas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Voa, "Sons curtos e secos", TipoSom.Sons_Suaves, true, "Longo e largo"));
 
         // MAMÍFEROS
         repository.save(new Mamifero("Leão", "Panthera leo", "Savana africana",
-                TipoAlimentacao.CARNIVORO, TipoPele.PELOS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.CORRE, "Rugido", TipoSom.VOCALIZACAO_GRAVE, 110, true, true));
+                TipoAlimentacao.Carnívoro, TipoPele.Pelos, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Corre, "Rugido", TipoSom.Vocalização_Grave, 110, true, true));
 
         repository.save(new Mamifero("Elefante", "Loxodonta africana", "Floresta e savana",
-                TipoAlimentacao.HERBIVORO, TipoPele.PELOS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.ANDA, "Barulho grave", TipoSom.VOCALIZACAO_GRAVE, 660, false, true));
+                TipoAlimentacao.Herbívoro, TipoPele.Pelos, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Anda, "Barulho grave", TipoSom.Vocalização_Grave, 660, false, true));
 
         repository.save(new Mamifero("Baleia Azul", "Balaenoptera musculus", "Oceano",
-                TipoAlimentacao.CARNIVORO, TipoPele.PELOS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.NADA, "Canto subaquático", TipoSom.CANTORIA_ASSOBIO, 365, false, true));
+                TipoAlimentacao.Carnívoro, TipoPele.Pelos, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Nada, "Canto subaquático", TipoSom.Cantoria_Assobio, 365, false, true));
 
         repository.save(new Mamifero("Humano", "Homo sapiens", "Terra",
-                TipoAlimentacao.ONIVORO, TipoPele.PELOS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.ANDA, "Fala", TipoSom.COMUNICACAO_HUMANA, 280, true, true));
+                TipoAlimentacao.Onívoro, TipoPele.Pelos, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Anda, "Fala", TipoSom.Comunicação_Humana, 280, true, true));
 
         repository.save(new Mamifero("Cavalo", "Equus ferus caballus", "Campos e estepes",
-                TipoAlimentacao.HERBIVORO, TipoPele.PELOS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.CORRE, "Relincho", TipoSom.VOCALIZACAO_AGUDA, 340, true, false));
+                TipoAlimentacao.Herbívoro, TipoPele.Pelos, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Corre, "Relincho", TipoSom.Vocalização_Aguda, 340, true, false));
 
         // PEIXES
         repository.save(new Peixe("Tubarão-branco", "Carcharodon carcharias", "Oceano aberto",
-                TipoAlimentacao.CARNIVORO, TipoPele.ESCAMAS, TipoRespiracao.BRANQUIAL,
-                ModoLocomocao.NADA, "Cliques/silêncio", TipoSom.SILENCIO, true, true));
+                TipoAlimentacao.Carnívoro, TipoPele.Escamas, TipoRespiracao.Branquial,
+                ModoLocomocao.Nada, "Cliques/silêncio", TipoSom.Silêncio, true, true));
 
         repository.save(new Peixe("Salmão", "Salmo salar", "Rios e oceanos",
-                TipoAlimentacao.PISCIVORO, TipoPele.ESCAMAS, TipoRespiracao.BRANQUIAL,
-                ModoLocomocao.NADA, "Ruídos suaves", TipoSom.SONS_SUAVES, false, true));
+                TipoAlimentacao.Piscívoro, TipoPele.Escamas, TipoRespiracao.Branquial,
+                ModoLocomocao.Nada, "Ruídos suaves", TipoSom.Sons_Suaves, false, true));
 
         repository.save(new Peixe("Peixe-palhaço", "Amphiprion ocellaris", "Recifes de coral",
-                TipoAlimentacao.PLANCTIVORO, TipoPele.ESCAMAS, TipoRespiracao.BRANQUIAL,
-                ModoLocomocao.NADA, "Quase inaudível", TipoSom.SILENCIO, true, true));
+                TipoAlimentacao.Planctívoro, TipoPele.Escamas, TipoRespiracao.Branquial,
+                ModoLocomocao.Nada, "Quase inaudível", TipoSom.Silêncio, true, true));
 
         repository.save(new Peixe("Pirarucu", "Arapaima gigas", "Rios da Amazônia",
-                TipoAlimentacao.CARNIVORO, TipoPele.ESCAMAS, TipoRespiracao.BRANQUIAL,
-                ModoLocomocao.NADA, "Estalo", TipoSom.SONS_SUAVES, false, true));
+                TipoAlimentacao.Carnívoro, TipoPele.Escamas, TipoRespiracao.Branquial,
+                ModoLocomocao.Nada, "Estalo", TipoSom.Sons_Suaves, false, true));
 
         repository.save(new Peixe("Lampreia", "Petromyzon marinus", "Água doce e salgada",
-                TipoAlimentacao.PARASITA, TipoPele.ESCAMAS, TipoRespiracao.BRANQUIAL,
-                ModoLocomocao.NADA, "Silencioso", TipoSom.SILENCIO, true, false));
+                TipoAlimentacao.Parasita, TipoPele.Escamas, TipoRespiracao.Branquial,
+                ModoLocomocao.Nada, "Silencioso", TipoSom.Silêncio, true, false));
 
         // RÉPTEIS
         repository.save(new Reptil("Cobra-real", "Ophiophagus hannah", "Florestas tropicais",
-                TipoAlimentacao.CARNIVORO, TipoPele.ESCAMAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.RASTEJA, "Silvo", TipoSom.SONS_SUAVES, true, "Rastejante"));
+                TipoAlimentacao.Carnívoro, TipoPele.Escamas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Rasteja, "Silvo", TipoSom.Sons_Suaves, true, "Rastejante"));
 
         repository.save(new Reptil("Camaleão", "Chamaeleo calyptratus", "Árvores",
-                TipoAlimentacao.INSETIVORO, TipoPele.ESCAMAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.ANDA, "Silencioso", TipoSom.SILENCIO, false, "Quadrúpede lento"));
+                TipoAlimentacao.Insetívoro, TipoPele.Escamas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Anda, "Silencioso", TipoSom.Silêncio, false, "Quadrúpede lento"));
 
         repository.save(new Reptil("Jacaré-açu", "Melanosuchus niger", "Rios da Amazônia",
-                TipoAlimentacao.CARNIVORO, TipoPele.ESCAMAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.NADA, "Rugido grave", TipoSom.VOCALIZACAO_GRAVE, false, "Nadador e andador"));
+                TipoAlimentacao.Carnívoro, TipoPele.Escamas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Nada, "Rugido grave", TipoSom.Vocalização_Grave, false, "Nadador e andador"));
 
         repository.save(new Reptil("Tartaruga-verde", "Chelonia mydas", "Oceanos tropicais",
-                TipoAlimentacao.HERBIVORO, TipoPele.ESCAMAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.NADA, "Quase inaudível", TipoSom.SILENCIO, false, "Nadadora"));
+                TipoAlimentacao.Herbívoro, TipoPele.Escamas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Nada, "Quase inaudível", TipoSom.Silêncio, false, "Nadadora"));
 
         repository.save(new Reptil("Lagarto teiú", "Salvator merianae", "Cerrado e florestas",
-                TipoAlimentacao.ONIVORO, TipoPele.ESCAMAS, TipoRespiracao.PULMONAR,
-                ModoLocomocao.ANDA, "Estalo curto", TipoSom.SONS_SUAVES, false, "Quadrúpede ágil"));
+                TipoAlimentacao.Onívoro, TipoPele.Escamas, TipoRespiracao.Pulmonar,
+                ModoLocomocao.Anda, "Estalo curto", TipoSom.Sons_Suaves, false, "Quadrúpede ágil"));
     }
 }

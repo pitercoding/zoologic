@@ -15,7 +15,7 @@ public class Ave extends Chordata {
             TipoPele tipoPele, TipoRespiracao tipoRespiracao, ModoLocomocao modoLocomocao,
             String somEmitido, TipoSom tipoSom, boolean voa, String tipoDeBico) {
 
-        super(nomePopular, nomeCientifico, ClasseAnimal.AVE, habitat, alimentacao,
+        super(nomePopular, nomeCientifico, ClasseAnimal.Ave, habitat, alimentacao,
                 tipoPele, tipoRespiracao, modoLocomocao, somEmitido, tipoSom);
 
         this.voa = voa;

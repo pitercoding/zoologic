@@ -60,18 +60,18 @@ public class AnimalService {
                 .filter(animal -> {
                     String habitat = animal.getHabitat().toLowerCase();
                     switch (categoria) {
-                        case AQUATICO:
+                        case Aquático:
                             return habitat.contains("oceano") || habitat.contains("água") ||
                                     habitat.contains("lago") || habitat.contains("rio") ||
                                     habitat.contains("recife") || habitat.contains("polar");
-                        case FLORESTAL:
+                        case Florestal:
                             return habitat.contains("floresta") || habitat.contains("árvore") ||
                                     habitat.contains("mata") || habitat.contains("cerrado");
-                        case TERRESTRE:
+                        case Terrestre:
                             return habitat.contains("terra") || habitat.contains("savana") ||
                                     habitat.contains("deserto") || habitat.contains("montanha") ||
                                     habitat.contains("campo") || habitat.contains("estepe");
-                        case URBANO:
+                        case Urbano:
                             return habitat.contains("urbano");
                         default:
                             return false;
